@@ -1,0 +1,25 @@
+df <- diamonds
+glimpse(df)
+
+# interactive histogram
+library(plotly)
+g <- plot_ly(x = rnorm(500), type = "histogram")
+g
+
+g <- plot_ly(x = rnorm(500), opacity = 0.6, type = "histogram") %>%
+  add_trace(x = rnorm(500) + 1) %>%
+  layout(barmode =  "overlay")
+  
+# multiple frequency
+ggplot(df, aes(price, y = ..density..)) +
+  geom_density(aes(colour = cut), binwidth = 500)
+  
+# Box Plot  
+  ggplot(df, aes(x = cut, y = price, fill = cut)) +
+         geom_boxplot()
+         
+# violin
+ggplot(df, aes(x = cut, y = price, fill = cut)) +
+         geom_violin(alpha = 0.6)
+
+         
